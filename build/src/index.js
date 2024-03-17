@@ -12,7 +12,7 @@ const app = (0, express_1.default)();
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.json({ limit: '50mb' }));
 app.use((0, cors_1.default)({
-    origin: 'http://localhost:3000',
+    origin: 'https://cblog-39q2urz3i-juanalv1.vercel.app',
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
     optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
