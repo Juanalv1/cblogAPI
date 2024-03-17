@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "i.js", "use": "@now/node" }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/app.js" }
+  ]
+}
