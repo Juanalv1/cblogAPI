@@ -41,6 +41,24 @@ export class PostModel {
       return '500'
     }
   }
+  static async getAllTitles () {
+    try {
+      const posts = await db.posts.findMany({
+        orderBy: {
+          post_id: 'desc'
+        },
+        select: {
+          post_title : true
+        }
+      })
+      if (posts) {
+        return posts
+      } else return '500'
+    } catch (error) {
+      console.error(error)
+      return '500'
+    }
+  }
   static async getById (req: Request) {
     const id = Number(req.params.id)
     console.log(id)

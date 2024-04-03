@@ -15,9 +15,17 @@ export class PostController {
 
   //READ
 
-  static async getAll (_req: Request, res: Response){
+  static async getAll (req: Request, res: Response){
+
     try {
-      const posts = await PostModel.getAll()
+      let posts
+      const { onlytitles } = req.params
+      if (onlytitles) {
+        posts = await PostModel.getAllTitles()
+      } else {
+        posts = await PostModel.getAll()
+      }
+
       if (posts == '500') {
         res.status(500).json('Server error')
       }else if (posts) res.status(200).json(posts)
