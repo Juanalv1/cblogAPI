@@ -28,10 +28,17 @@ class PostController {
         });
     }
     //READ
-    static getAll(_req, res) {
+    static getAll(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const posts = yield post_1.PostModel.getAll();
+                let posts;
+                const { onlytitles } = req.params;
+                if (onlytitles) {
+                    posts = yield post_1.PostModel.getAllTitles();
+                }
+                else {
+                    posts = yield post_1.PostModel.getAll();
+                }
                 if (posts == '500') {
                     res.status(500).json('Server error');
                 }

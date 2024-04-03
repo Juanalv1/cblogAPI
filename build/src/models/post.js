@@ -62,6 +62,29 @@ class PostModel {
             }
         });
     }
+    static getAllTitles() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const posts = yield db_1.db.posts.findMany({
+                    orderBy: {
+                        post_id: 'desc'
+                    },
+                    select: {
+                        post_title: true
+                    }
+                });
+                if (posts) {
+                    return posts;
+                }
+                else
+                    return '500';
+            }
+            catch (error) {
+                console.error(error);
+                return '500';
+            }
+        });
+    }
     static getById(req) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = Number(req.params.id);
